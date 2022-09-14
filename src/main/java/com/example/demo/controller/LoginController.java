@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 public class LoginController {
@@ -25,7 +27,7 @@ public class LoginController {
     }
 
     @RequestMapping("/user/getAll")
-    public User getAllUsers() {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -46,18 +48,12 @@ public class LoginController {
     }
 
     @RequestMapping("/user/update")
-    public User updateUser(User user){
-        User userUpdate = userService.updateUser(user);
-        if (userUpdate != null) {
-            log.info("User update OK! Info: " + userUpdate.toString());
-        } else {
-            log.error("Not found matched user!");
-        }
-        return userUpdate;
+    public void updateUser(User user) {
+        userService.updateUser(user);
     }
 
     @RequestMapping("/user/delete")
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         userService.deleteUser(user);
     }
 }
