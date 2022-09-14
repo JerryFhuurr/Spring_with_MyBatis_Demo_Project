@@ -26,7 +26,56 @@
     <insert id="addUser" parameterType="com.example.demo.model.User">
         insert into user
         <!-- prefix 是前缀 suffix 是后缀 -->
-        <trim prefix="(" suffix=")"
+        <!-- suffixOverrides 是去掉SQL后面的字符或者语句 prefixOverrides 是去掉之前的 -->
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+        </trim>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="userName != null">
+                #{UserName},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+        </trim>
     </insert>
 
+
+    <!-- update a user -->
+    <update id="updateUser" parameterType="com.example.demo.model.User">
+        UPDATE user
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="userName != null">
+                user_name = #{UserName},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email}
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
 </mapper>
