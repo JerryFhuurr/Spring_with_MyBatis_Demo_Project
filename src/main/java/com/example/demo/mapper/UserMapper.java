@@ -7,4 +7,11 @@ public interface UserMapper {
 
     User getByUserNameAndPassword(User user);
 
+    //unsure about return type 'User'
+    User getAllUsers();
+    User getUserById(User user);
+    void addUser(User user);
+    User updateUser(User user);
+    void deleteUser(User user);
+
 }
