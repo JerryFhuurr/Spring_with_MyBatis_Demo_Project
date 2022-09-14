@@ -24,5 +24,40 @@ public class LoginController {
         return loginUser;
     }
 
+    @RequestMapping("/user/getAll")
+    public User getAllUsers() {
+        return userService.getAllUsers();
+    }
 
+    @RequestMapping("/user/getUserById")
+    public User getUserById(User user) {
+        User userGet = userService.getUserById(user);
+        if (userGet != null) {
+            log.info("User get OK! Info: " + userGet.toString());
+        } else {
+            log.error("Not found matched user!");
+        }
+        return userGet;
+    }
+
+    @RequestMapping("/user/add")
+    public void addUser(User user) {
+        userService.addUser(user);
+    }
+
+    @RequestMapping("/user/update")
+    public User updateUser(User user){
+        User userUpdate = userService.updateUser(user);
+        if (userUpdate != null) {
+            log.info("User update OK! Info: " + userUpdate.toString());
+        } else {
+            log.error("Not found matched user!");
+        }
+        return userUpdate;
+    }
+
+    @RequestMapping("/user/delete")
+    public void deleteUser(User user){
+        userService.deleteUser(user);
+    }
 }
