@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-public class LoginController {
+public class UserController {
     @Autowired
     UserService userService;
 
