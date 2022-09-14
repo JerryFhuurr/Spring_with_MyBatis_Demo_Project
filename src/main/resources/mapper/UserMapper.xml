@@ -78,4 +78,12 @@
         WHERE
         id = #{id}
     </update>
+
+
+    <!-- delete a user -->
+    <delete id="deleteUser" parameterType="com.example.demo.model.User">
+        DELETE
+        FROM user
+        WHERE id = #{id}
+    </delete>
 </mapper>
