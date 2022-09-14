@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LocationMapper">
+
+    <!-- get a location by its id -->
+    <select id="getLocationById" resultType="com.example.demo.model.Location">
+        <if test="id != null">
+            SELECT * FROM location WHERE l_id = #{id}
+        </if>
+    </select>
+
+    <!-- get a location by name -->
+    <select id="getLocationByName" resultType="com.example.demo.model.Location">
+        <if test="name != null">
+            SELECT * FROM location WHERE l_name = #{name}
+        </if>
+    </select>
+
+    <!-- get locations by country -->
+    <select id="getLocationsByCountry" resultType="com.example.demo.model.Location">
+        <if test="country != null">
+            SELECT * FROM location WHERE l_country = #{country}
+        </if>
+    </select>
+</mapper>
