@@ -22,4 +22,13 @@
             SELECT * FROM location WHERE l_country = #{country}
         </if>
     </select>
+
+    <!-- get locations by country code -->
+    <select id="getLocationsByCountryCode" resultType="com.example.demo.model.Location">
+        <if test="countryCode != null">
+            SELECT * FROM location WHERE l_country_code = #{countryCode}
+        </if>
+    </select>
+
+
 </mapper>

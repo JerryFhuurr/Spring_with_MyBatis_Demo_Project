@@ -1,12 +1,10 @@
-package com.example.demo.mapper;
+package com.example.demo.services;
 
 import com.example.demo.model.Location;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface LocationMapper {
+public interface LocationService {
     Location getLocationById(Location location);
 
     Location getLocationByName(Location location);
