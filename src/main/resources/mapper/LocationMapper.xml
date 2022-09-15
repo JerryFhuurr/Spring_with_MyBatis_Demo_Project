@@ -93,8 +93,24 @@
         VALUES
         <foreach collection="list" item="location" separator=",">
             (#{location.lName}, #{location.lCity},
-             #{location.lState}, #{location.lCountry}, #{location.lCountryCode},
-             #{location.lPostcode})
+            #{location.lState}, #{location.lCountry}, #{location.lCountryCode},
+            #{location.lPostcode})
         </foreach>
     </insert>
+
+    <!-- update more than one location -->
+    <update id="updateLocations" parameterType="com.example.demo.model.Location">
+        <foreach collection="list" item="location" open="" close="" separator=";">
+            UPDATE location
+            <set>
+                l_name = #{location.lName},
+                l_city = #{location.lCity},
+                l_state = #{location.lState},
+                l_country = #{location.lCountry},
+                l_country_code = #{location.lCountryCode},
+                l_postcode = #{location.lPostcode}
+            </set>
+            WHERE l_id = ${location.lId}
+        </foreach>
+    </update>
 </mapper>

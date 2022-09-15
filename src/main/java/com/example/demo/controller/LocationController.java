@@ -78,4 +78,19 @@ public class LocationController {
             return "Location(s) added failed.";
         }
     }
+
+    @RequestMapping("/location/updateMore")
+    public String  updateLocations(@RequestBody List<Location> locations){
+        int r = service.updateLocations(locations);
+        int sizeOfUpdated = locations.size();
+        if (r >= 1) {
+            if (sizeOfUpdated > 1) {
+                return sizeOfUpdated + " locations updated!";
+            } else {
+                return sizeOfUpdated + " location updated";
+            }
+        } else {
+            return "Location(s) update failed.";
+        }
+    }
 }

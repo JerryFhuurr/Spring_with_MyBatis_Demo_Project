@@ -22,4 +22,7 @@ public interface LocationService {
 
     @Transactional
     int addLocations(List<Location> locations);
+
+    @Transactional
+    int updateLocations(List<Location> locations);
 }

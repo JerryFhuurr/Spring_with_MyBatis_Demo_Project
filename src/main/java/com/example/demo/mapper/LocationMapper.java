@@ -20,4 +20,6 @@ public interface LocationMapper {
     int deleteLocations(List<Integer> ids);
 
     int addLocations(List<Location> locations);
+
+    int updateLocations(List<Location> locations);
 }

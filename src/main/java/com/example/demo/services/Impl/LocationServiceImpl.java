@@ -48,4 +48,9 @@ public class LocationServiceImpl implements LocationService {
     public int addLocations(List<Location> locations) {
         return locationMapper.addLocations(locations);
     }
+
+    @Override
+    public int updateLocations(List<Location> locations) {
+        return locationMapper.updateLocations(locations);
+    }
 }
