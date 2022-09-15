@@ -11,4 +11,7 @@ import java.util.List;
 public interface StudentService {
     @Transactional
     List<Student> getStudents(Teacher teacher);
+
+    @Transactional
+    Teacher getATeacherById(Teacher teacher);
 }

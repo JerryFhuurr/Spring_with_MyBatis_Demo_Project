@@ -20,4 +20,18 @@ public class StudentController {
     public List<Student> getStudents(Teacher teacher) {
         return service.getStudents(teacher);
     }
+
+    @RequestMapping("/teacher/get/contain/students")
+    public String getATeacherById(Teacher teacher) {
+        Teacher teacherGet = service.getATeacherById(teacher);
+        if (teacherGet != null) {
+            if (teacherGet.getStudents().size() != 0) {
+                return "Teacher found !" + teacherGet.toString();
+            } else {
+                return "Teacher get success ! And no student found for this teacher";
+            }
+        } else {
+            return "No matched teacher found.";
+        }
+    }
 }

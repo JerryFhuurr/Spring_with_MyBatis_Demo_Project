@@ -10,4 +10,5 @@ import java.util.List;
 public interface StudentMapper {
 
     List<Student> getStudents(Teacher teacher);
+    Teacher getATeacherById(Teacher teacher);
 }
