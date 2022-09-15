@@ -1,9 +1,12 @@
 package com.example.demo.services;
 
 import com.example.demo.model.Location;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public interface LocationService {
     Location getLocationById(Location location);
 
@@ -17,5 +20,6 @@ public interface LocationService {
 
     int deleteLocations(List<Integer> ids);
 
+    @Transactional
     int addLocations(List<Location> locations);
 }

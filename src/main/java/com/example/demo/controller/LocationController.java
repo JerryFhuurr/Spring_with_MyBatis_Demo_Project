@@ -68,7 +68,7 @@ public class LocationController {
     public String addLocations(@RequestBody List<Location> locations) {
         int r = service.addLocations(locations);
         int sizeOfAdded = locations.size();
-        if (r == 1) {
+        if (r >= 1) {
             if (sizeOfAdded > 1) {
                 return sizeOfAdded + " locations added!";
             } else {
