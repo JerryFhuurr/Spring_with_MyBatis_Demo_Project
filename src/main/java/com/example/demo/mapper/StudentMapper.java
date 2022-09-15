@@ -11,4 +11,7 @@ public interface StudentMapper {
 
     List<Student> getStudents(Teacher teacher);
     Teacher getATeacherById(Teacher teacher);
+    List<Teacher> getTeachers();
+    int addStudent(List<Student> students);
+    List<Student> getStudentsAll();
 }

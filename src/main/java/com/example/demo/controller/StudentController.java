@@ -34,4 +34,47 @@ public class StudentController {
             return "No matched teacher found.";
         }
     }
+
+    @RequestMapping("/teacher/getAll")
+    public String getTeachers() {
+        List<Teacher> teachers = service.getTeachers();
+        if (teachers.size() >= 1) {
+            return teachers.toString();
+        } else return "No teacher in the table!";
+    }
+
+    public List<Teacher> getTeachersList() {
+        return service.getTeachers();
+    }
+
+    @RequestMapping("/student/add")
+    public String addStudents(List<Student> students) {
+        int teachersSize = getTeachersList().size();
+        int errorCount = 0;
+        for (var student :
+                students) {
+            if (student.getTeacher().getTeacherId() > teachersSize) {
+                errorCount++;
+                return student.getStudentId() + " has wrong teacher id !";
+            }
+        }
+        int r = service.addStudent(students);
+        if (r >= 1 && errorCount == 0) {
+            return r + " student(s) added";
+        } else return "Student added failed";
+    }
+
+    @RequestMapping("/student/getAll/string")
+    public String getStudentsString() {
+        List<Student> students = service.getStudentsAll();
+        if (students.size() >= 1) {
+            return students.toString();
+        } else return "No student in the table!";
+    }
+
+    @RequestMapping("/student/getAll/json")
+    public List<Student> getStudentsJson() {
+        List<Student> students = service.getStudentsAll();
+        return students;
+    }
 }

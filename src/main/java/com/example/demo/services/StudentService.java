@@ -14,4 +14,13 @@ public interface StudentService {
 
     @Transactional
     Teacher getATeacherById(Teacher teacher);
+
+    @Transactional
+    List<Teacher> getTeachers();
+
+    @Transactional
+    int addStudent(List<Student> students);
+
+    @Transactional
+    List<Student> getStudentsAll();
 }

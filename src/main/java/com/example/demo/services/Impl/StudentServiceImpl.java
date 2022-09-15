@@ -23,4 +23,19 @@ public class StudentServiceImpl implements StudentService {
     public Teacher getATeacherById(Teacher teacher) {
         return mapper.getATeacherById(teacher);
     }
+
+    @Override
+    public List<Teacher> getTeachers() {
+        return mapper.getTeachers();
+    }
+
+    @Override
+    public int addStudent(List<Student> students) {
+        return mapper.addStudent(students);
+    }
+
+    @Override
+    public List<Student> getStudentsAll() {
+        return mapper.getStudentsAll();
+    }
 }
