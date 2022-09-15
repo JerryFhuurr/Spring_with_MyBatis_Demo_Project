@@ -9,10 +9,10 @@
         </if>
     </select>
 
-    <!-- get a location by name -->
+    <!-- get a location by city -->
     <select id="getLocationByName" resultType="com.example.demo.model.Location">
         <if test="lName != null">
-            SELECT * FROM location WHERE l_name = #{lName}
+            SELECT * FROM location WHERE l_city = #{lCity}
         </if>
     </select>
 
@@ -31,4 +31,70 @@
     </select>
 
 
+    <!-- add a location -->
+    <insert id="addLocation" parameterType="com.example.demo.model.Location">
+        INSERT INTO location
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lId != null">
+                l_id,
+            </if>
+            <if test="lName != null">
+                l_name,
+            </if>
+            <if test="lCity != null">
+                l_city,
+            </if>
+            l_state,
+            <if test="lCountry != null">
+                l_country,
+            </if>
+            <if test="lCountryCode != null">
+                l_country_code,
+            </if>
+            <if test="lPostcode != null">
+                l_postcode,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lId != null">
+                #{lId},
+            </if>
+            <if test="lName != null">
+                #{lName},
+            </if>
+            <if test="lCity != null">
+                #{lCity},
+            </if>
+            #{lState},
+            <if test="lCountry != null">
+                #{lCountry},
+            </if>
+            <if test="lCountryCode != null">
+                #{lCountryCode},
+            </if>
+            <if test="lPostcode != null">
+                #{lPostcode},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- delete locations by id -->
+    <delete id="deleteLocations" parameterType="com.example.demo.model.Location">
+        DELETE FROM location WHERE l_id IN
+        <foreach collection="list" item="lId" separator="," open="(" close=")">
+            #{lId}
+        </foreach>
+    </delete>
+
+    <!-- add more than one location -->
+    <insert id="addLocations" parameterType="com.example.demo.model.Location">
+        INSERT INTO location (l_name, l_city, l_state, l_country, l_country_code, l_postcode)
+        VALUES
+        <foreach collection="list" item="location" separator=",">
+            (#{location.lName}, #{location.lCity},
+             #{location.lState}, #{location.lCountry}, #{location.lCountryCode},
+             #{location.lPostcode})
+        </foreach>
+    </insert>
 </mapper>

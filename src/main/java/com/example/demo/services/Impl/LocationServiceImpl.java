@@ -33,4 +33,19 @@ public class LocationServiceImpl implements LocationService {
     public List<Location> getLocationsByCountryCode(Location location) {
         return locationMapper.getLocationsByCountryCode(location);
     }
+
+    @Override
+    public int addLocation(Location location) {
+        return locationMapper.addLocation(location);
+    }
+
+    @Override
+    public int deleteLocations(List<Integer> ids) {
+        return locationMapper.deleteLocations(ids);
+    }
+
+    @Override
+    public int addLocations(List<Location> locations) {
+        return locationMapper.addLocations(locations);
+    }
 }

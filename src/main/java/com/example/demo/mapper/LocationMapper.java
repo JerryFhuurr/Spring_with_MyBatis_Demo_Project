@@ -14,4 +14,10 @@ public interface LocationMapper {
     List<Location> getLocationsByCountry(Location location);
 
     List<Location> getLocationsByCountryCode(Location location);
+
+    int addLocation(Location location);
+
+    int deleteLocations(List<Integer> ids);
+
+    int addLocations(List<Location> locations);
 }
