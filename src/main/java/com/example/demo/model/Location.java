@@ -1,4 +1,5 @@
 package com.example.demo.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,11 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Location {
-    private Integer id;
-    private String name;
-    private String city;
-    private String state;
-    private String country;
-    private String countryCode;
-    private Integer postcode;
+
+    // name must be camel case
+    private Integer lId;  //l_id
+    private String lName;  //l_name
+    private String lCity;  //l_city
+    private String lState;  //l_state
+    private String lCountry;  //l_country
+    private String lCountryCode;  //l_country_code
+    private String lPostcode;  //l_postcode
 }

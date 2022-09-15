@@ -17,9 +17,9 @@ public class LocationController {
     LocationService service;
 
     @RequestMapping("/location/handler")
-    public Location getLocationById(Location location){
+    public Location getLocationById(Location location) {
         Location locationR = service.getLocationById(location);
-        if (locationR != null){
+        if (locationR != null) {
             log.info("location get! info: " + locationR.toString());
         } else {
             log.error("no matched location found");

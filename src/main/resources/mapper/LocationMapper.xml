@@ -4,29 +4,29 @@
 
     <!-- get a location by its id -->
     <select id="getLocationById" resultType="com.example.demo.model.Location">
-        <if test="id != null">
-            SELECT * FROM location WHERE l_id = #{id}
+        <if test="lId != null">
+            SELECT * FROM location WHERE l_id = #{lId}
         </if>
     </select>
 
     <!-- get a location by name -->
     <select id="getLocationByName" resultType="com.example.demo.model.Location">
-        <if test="name != null">
-            SELECT * FROM location WHERE l_name = #{name}
+        <if test="lName != null">
+            SELECT * FROM location WHERE l_name = #{lName}
         </if>
     </select>
 
     <!-- get locations by country -->
     <select id="getLocationsByCountry" resultType="com.example.demo.model.Location">
-        <if test="country != null">
-            SELECT * FROM location WHERE l_country = #{country}
+        <if test="lCountry != null">
+            SELECT * FROM location WHERE l_country = #{lCountry}
         </if>
     </select>
 
     <!-- get locations by country code -->
     <select id="getLocationsByCountryCode" resultType="com.example.demo.model.Location">
-        <if test="countryCode != null">
-            SELECT * FROM location WHERE l_country_code = #{countryCode}
+        <if test="lCountryCode != null">
+            SELECT * FROM location WHERE l_country_code = #{lCountryCode}
         </if>
     </select>
 
