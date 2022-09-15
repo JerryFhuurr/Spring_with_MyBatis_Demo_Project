@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StudentMapper">
+
+    <select id="getStudents" resultMap="StudentTeacherB">
+        SELECT *
+        FROM student s, teacher t
+        WHERE s.student_teacher = t.teacher_id AND t.teacher_id = #{teacherId};
+    </select>
+    <resultMap id="StudentTeacherB" type="com.example.demo.model.Student">
+        <result property="studentId" column="student_id" />
+        <result property="studentName" column="student_name" />
+        <result property="studentAge" column="student_age" />
+        <result property="studentSex" column="student_sex" />
+        <association property="teacher" javaType="com.example.demo.model.Teacher">
+            <result property="teacherId" column="teacher_id" />
+        </association>
+    </resultMap>
+
+
+</mapper>
