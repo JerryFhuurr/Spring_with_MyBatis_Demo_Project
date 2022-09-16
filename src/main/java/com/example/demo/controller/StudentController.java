@@ -4,6 +4,7 @@ import com.example.demo.model.Student;
 import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import com.example.demo.services.StudentService;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class StudentController {
     StudentService service;
 
     @RequestMapping("/student/getAllB/test")
-    public List<Student> getStudents(Teacher teacher) {
+    public PageInfo<Student> getStudents(Teacher teacher) {
         return service.getStudents(teacher);
     }
 
@@ -60,16 +61,15 @@ public class StudentController {
 
     @RequestMapping("/student/getAll/string")
     public String getStudentsString() {
-        List<Student> students = service.getStudentsAll();
-        if (students.size() >= 1) {
+        PageInfo<Student> students = service.getStudentsAll();
+        if (students != null) {
             return students.toString();
         } else return "No student in the table!";
     }
 
     @RequestMapping("/student/getAll/json")
-    public List<Student> getStudentsJson() {
-        List<Student> students = service.getStudentsAll();
-        return students;
+    public PageInfo<Student> getStudentsJson() {
+        return service.getStudentsAll();
     }
 
     @RequestMapping("/student/delete")

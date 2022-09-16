@@ -5,6 +5,8 @@ import com.example.demo.model.Student;
 import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import com.example.demo.services.StudentService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,11 @@ public class StudentServiceImpl implements StudentService {
     StudentMapper mapper;
 
     @Override
-    public List<Student> getStudents(Teacher teacher) {
-        return mapper.getStudents(teacher);
+    public PageInfo<Student> getStudents(Teacher teacher) {
+        PageHelper.startPage(2, 2);
+        List<Student> students = mapper.getStudents(teacher);
+        PageInfo<Student> pageInfo = new PageInfo<>(students);
+        return pageInfo;
     }
 
     @Override
@@ -37,8 +42,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getStudentsAll() {
-        return mapper.getStudentsAll();
+    public PageInfo<Student> getStudentsAll() {
+        PageHelper.startPage(1, 5);
+        List<Student> students = mapper.getStudentsAll();
+        PageInfo<Student> pageInfo = new PageInfo<>(students);
+        return pageInfo;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.model.Student;
 import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Service
 public interface StudentService {
     @Transactional
-    List<Student> getStudents(Teacher teacher);
+    PageInfo<Student> getStudents(Teacher teacher);
 
     @Transactional
     Teacher getATeacherById(Teacher teacher);
@@ -23,7 +24,7 @@ public interface StudentService {
     int addStudent(List<Student> students);
 
     @Transactional
-    List<Student> getStudentsAll();
+    PageInfo<Student> getStudentsAll();
 
     @Transactional
     int deleteStudent(List<Student> students);
