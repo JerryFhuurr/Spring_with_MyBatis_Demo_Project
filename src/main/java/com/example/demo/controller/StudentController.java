@@ -116,4 +116,14 @@ public class StudentController {
             return "Data copy failed! (age > 16)";
         }
     }
+
+    @RequestMapping("/student/add/age")
+    public String addStudentByAge(@RequestBody List<Student> students){
+        int r = service.addStudentByAge(students);
+        if (r != 0) {
+            return students.size() + " student(s) added !";
+        } else {
+            return "Student add failed !";
+        }
+    }
 }

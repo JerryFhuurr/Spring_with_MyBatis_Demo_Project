@@ -73,4 +73,9 @@ public class StudentServiceImpl implements StudentService {
     public int insertIntoAge16() {
         return mapper.insertIntoAge16();
     }
+
+    @Override
+    public int addStudentByAge(List<Student> students) {
+        return mapper.addStudentByAge(students);
+    }
 }

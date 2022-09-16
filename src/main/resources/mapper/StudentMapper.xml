@@ -133,12 +133,18 @@
 
     <!-- add student to two new age tables according to their ages -->
     <insert id="addStudentByAge" parameterType="com.example.demo.model.Student">
-        <foreach collection="list" item="student" separator=";"></foreach>
+        <foreach collection="list" item="student" separator=";">
         <choose>
-            <when test="student_age &lt;= 15">
+            <when test="student.studentAge &lt;= 15">
+                INSERT INTO student_age_15 (student_name, student_sex, student_age, student_teacher)
+                VALUES (#{student.studentName}, #{student.studentSex}, #{student.studentAge}, #{student.teacher})
+            </when>
+            <when test="student.studentAge &gt; 16">
                 INSERT INTO student_age_16 (student_name, student_sex, student_age, student_teacher)
                 VALUES (#{student.studentName}, #{student.studentSex}, #{student.studentAge}, #{student.teacher})
             </when>
+            <otherwise></otherwise>
         </choose>
+        </foreach>
     </insert>
 </mapper>

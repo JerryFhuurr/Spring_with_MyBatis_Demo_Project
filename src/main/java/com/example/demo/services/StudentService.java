@@ -40,4 +40,7 @@ public interface StudentService {
 
     @Transactional
     int insertIntoAge16();
+
+    @Transactional
+    int addStudentByAge(List<Student> students);
 }

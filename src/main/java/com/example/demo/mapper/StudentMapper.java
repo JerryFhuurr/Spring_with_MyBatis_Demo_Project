@@ -29,4 +29,6 @@ public interface StudentMapper {
     int insertIntoAge15();
 
     int insertIntoAge16();
+
+    int addStudentByAge(List<Student> students);
 }
