@@ -64,4 +64,14 @@
         SELECT *
         FROM student;
     </select>
+
+    <!-- delete a student -->
+    <delete id="deleteStudent" parameterType="com.example.demo.model.Student">
+        DELETE
+        FROM student
+        WHERE student_id IN
+        <foreach collection="list" item="student" separator="," open="(" close=")">
+            #{student.studentId}
+        </foreach>
+    </delete>
 </mapper>

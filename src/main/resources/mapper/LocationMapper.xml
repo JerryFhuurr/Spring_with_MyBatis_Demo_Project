@@ -113,4 +113,6 @@
             WHERE l_id = ${location.lId}
         </foreach>
     </update>
+
+
 </mapper>

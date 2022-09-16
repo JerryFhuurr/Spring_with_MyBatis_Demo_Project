@@ -38,4 +38,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getStudentsAll() {
         return mapper.getStudentsAll();
     }
+
+    @Override
+    public int deleteStudent(List<Student> students) {
+        return mapper.deleteStudent(students);
+    }
 }

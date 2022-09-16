@@ -70,4 +70,14 @@ public class StudentController {
         List<Student> students = service.getStudentsAll();
         return students;
     }
+
+    @RequestMapping("/student/delete")
+    public String deleteStudent(@RequestBody List<Student> students) {
+        int r = service.deleteStudent(students);
+        if (r != 0) {
+            return students.size() + " student(s) deleted !";
+        } else {
+            return "Student delete failed !";
+        }
+    }
 }

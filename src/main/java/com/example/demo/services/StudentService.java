@@ -23,4 +23,7 @@ public interface StudentService {
 
     @Transactional
     List<Student> getStudentsAll();
+
+    @Transactional
+    int deleteStudent(List<Student> students);
 }
