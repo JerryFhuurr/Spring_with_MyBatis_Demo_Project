@@ -30,4 +30,13 @@ public interface StudentService {
 
     @Transactional
     StudentInfo getStudentWithTeacherBySId(Student student);
+
+    @Transactional
+    int updateStudent(List<Student> students);
+
+    @Transactional
+    int insertIntoAge15();
+
+    @Transactional
+    int insertIntoAge16();
 }

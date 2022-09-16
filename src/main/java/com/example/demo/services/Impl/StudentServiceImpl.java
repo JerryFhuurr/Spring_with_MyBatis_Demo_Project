@@ -15,6 +15,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     StudentMapper mapper;
+
     @Override
     public List<Student> getStudents(Teacher teacher) {
         return mapper.getStudents(teacher);
@@ -48,5 +49,20 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentInfo getStudentWithTeacherBySId(Student student) {
         return mapper.getStudentWithTeacherBySId(student);
+    }
+
+    @Override
+    public int updateStudent(List<Student> students) {
+        return mapper.updateStudent(students);
+    }
+
+    @Override
+    public int insertIntoAge15() {
+        return mapper.insertIntoAge15();
+    }
+
+    @Override
+    public int insertIntoAge16() {
+        return mapper.insertIntoAge16();
     }
 }

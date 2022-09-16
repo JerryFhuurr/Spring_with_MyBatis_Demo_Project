@@ -83,7 +83,37 @@ public class StudentController {
     }
 
     @RequestMapping("/student/get/withTeacher/id")
-    public StudentInfo getStudentWithTeacherBySId(Student student){
+    public StudentInfo getStudentWithTeacherBySId(Student student) {
         return service.getStudentWithTeacherBySId(student);
+    }
+
+    @RequestMapping("/student/update/id")
+    public String updateStudent(@RequestBody List<Student> students) {
+        int r = service.updateStudent(students);
+        if (r != 0) {
+            return students.size() + " student(s) updated !";
+        } else {
+            return "Student update failed !";
+        }
+    }
+
+    @RequestMapping("/student/select/age15")
+    public String insertIntoAge15() {
+        int r = service.insertIntoAge15();
+        if (r >= 1) {
+            return "Data copy done! (age <= 15)";
+        } else {
+            return "Data copy failed! (age <= 15)";
+        }
+    }
+
+    @RequestMapping("/student/select/age16")
+    public String insertIntoAge16() {
+        int r = service.insertIntoAge16();
+        if (r >= 1) {
+            return "Data copy done! (age > 16)";
+        } else {
+            return "Data copy failed! (age > 16)";
+        }
     }
 }
