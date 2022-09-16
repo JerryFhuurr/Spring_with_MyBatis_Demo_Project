@@ -2,6 +2,7 @@ package com.example.demo.services.Impl;
 
 import com.example.demo.mapper.StudentMapper;
 import com.example.demo.model.Student;
+import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import com.example.demo.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public int deleteStudent(List<Student> students) {
         return mapper.deleteStudent(students);
+    }
+
+    @Override
+    public StudentInfo getStudentWithTeacherBySId(Student student) {
+        return mapper.getStudentWithTeacherBySId(student);
     }
 }

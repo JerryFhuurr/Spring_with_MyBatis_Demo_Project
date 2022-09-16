@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.model.Student;
+import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,4 +16,5 @@ public interface StudentMapper {
     int addStudent(List<Student> students);
     List<Student> getStudentsAll();
     int deleteStudent(List<Student> students);
+    StudentInfo getStudentWithTeacherBySId(Student student);
 }

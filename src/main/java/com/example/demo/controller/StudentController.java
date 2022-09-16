@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Student;
+import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import com.example.demo.services.StudentService;
 import lombok.extern.slf4j.Slf4j;
@@ -79,5 +80,10 @@ public class StudentController {
         } else {
             return "Student delete failed !";
         }
+    }
+
+    @RequestMapping("/student/get/withTeacher/id")
+    public StudentInfo getStudentWithTeacherBySId(Student student){
+        return service.getStudentWithTeacherBySId(student);
     }
 }

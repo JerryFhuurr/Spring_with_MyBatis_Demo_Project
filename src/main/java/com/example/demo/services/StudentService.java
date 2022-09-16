@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.model.Student;
+import com.example.demo.model.StudentInfo;
 import com.example.demo.model.Teacher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,4 +27,7 @@ public interface StudentService {
 
     @Transactional
     int deleteStudent(List<Student> students);
+
+    @Transactional
+    StudentInfo getStudentWithTeacherBySId(Student student);
 }

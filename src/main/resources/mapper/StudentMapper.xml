@@ -74,4 +74,28 @@
             #{student.studentId}
         </foreach>
     </delete>
+
+    <!-- get student with teacher -->
+    <select id="getStudentWithTeacherBySId" resultMap="getTeacherByStudent">
+        SELECT *
+        FROM student st,
+             teacher t
+        WHERE st.student_id = t.teacher_id
+          AND st.student_id = #{studentId};
+    </select>
+    <resultMap id="getTeacherByStudent" type="com.example.demo.model.StudentInfo">
+        <result property="studentId" column="student_id" />
+        <result property="studentName" column="student_name" />
+        <result property="studentAge" column="student_age" />
+        <result property="studentSex" column="student_sex" />
+        <collection property="teacher" javaType="com.example.demo.model.Teacher" ofType="com.example.demo.model.Teacher"
+                    select="getTeacherByStudentId" column="teacher_id" />
+    </resultMap>
+    <select id="getTeacherByStudentId" resultType="com.example.demo.model.Teacher">
+        SELECT *
+        FROM teacher
+        WHERE teacher_id = #{teacherId};
+    </select>
+
+
 </mapper>
