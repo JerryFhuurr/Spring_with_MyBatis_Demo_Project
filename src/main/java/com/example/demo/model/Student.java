@@ -14,5 +14,5 @@ public class Student {
     private String studentName;
     private int studentAge;
     private String studentSex;
-    private Teacher teacher;
+    private int teacher;
 }

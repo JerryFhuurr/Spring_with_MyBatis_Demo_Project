@@ -5,6 +5,7 @@ import com.example.demo.model.Teacher;
 import com.example.demo.services.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,31 +36,23 @@ public class StudentController {
         }
     }
 
-    @RequestMapping("/teacher/getAll")
-    public String getTeachers() {
+    @RequestMapping("/teacher/getAll/string")
+    public String getTeachersString() {
         List<Teacher> teachers = service.getTeachers();
         if (teachers.size() >= 1) {
             return teachers.toString();
         } else return "No teacher in the table!";
     }
 
-    public List<Teacher> getTeachersList() {
+    @RequestMapping("/teacher/getAll/json")
+    public List<Teacher> getTeachersJson() {
         return service.getTeachers();
     }
 
     @RequestMapping("/student/add")
-    public String addStudents(List<Student> students) {
-        int teachersSize = getTeachersList().size();
-        int errorCount = 0;
-        for (var student :
-                students) {
-            if (student.getTeacher().getTeacherId() > teachersSize) {
-                errorCount++;
-                return student.getStudentId() + " has wrong teacher id !";
-            }
-        }
+    public String addStudents(@RequestBody List<Student> students) {
         int r = service.addStudent(students);
-        if (r >= 1 && errorCount == 0) {
+        if (r >= 1) {
             return r + " student(s) added";
         } else return "Student added failed";
     }
